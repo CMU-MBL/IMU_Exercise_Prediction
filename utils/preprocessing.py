@@ -113,7 +113,13 @@ def get_cluster_label(ex_code):
 	return cluster_id
 
 
+def losocv_split_train_list(all_subject_id, test_subject):  
+	""" Split data for the LOSOCV scheme
+	"""
 
+	train_list = [m for m in all_subject_id if m != test_subject]
+
+	return train_list
 
 
 
