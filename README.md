@@ -6,13 +6,18 @@ This repository presents the implementation of our collaborative project between
 
 The preprint version is now available on [TechRxiv](https://doi.org/10.36227/techrxiv.23296487.v1).
 
+## Directory 
+
 You may preserve the following directory tree to run the code on your local machine without further modifications.
 
 ```
 $ Directory tree
 .
 ├── data\
-│   └── (containing sample IMU data)
+│   ├── parsed_h5_csv
+│   │   └── (IMU data here)
+│   └── parsed_joint_angles_all
+│       └── (joint angles data here)
 ├── model\
 │   ├── Type1.py
 │   ├── Type2.py
@@ -24,14 +29,22 @@ $ Directory tree
 │   ├── ...
 │   └── ... 
 ├── utils
-│   ├── ... 
-│   ├── ...
-│   └── ... 
-├── tuning.py
-├── eval.py
+│   ├── eval.py 
+│   ├── network.py
+│   ├── preprocessing.py
+│   └── visualizer.py
+├── clustering.py
+├── config.py
 ├── constants.py
-└── demo.py
+├── demo.py
+└── tuning.py
 ```
+
+## Data
+
+Data were collected from 19 participants performing 37 exercises while wearing 10 inertial measurement units (IMUs) on chest, pelvis, wrists, thighs, shanks, and feet (see the figure below).
+
+![figure [exercise]: Algorithm Overview](figure/exercise.png)
 
 You may use data samples in the `data` to run the code, or download the full dataset on [SimTK](https://simtk.org/projects/imu-exercise).
 
