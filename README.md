@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository presents the implementation of our publication (submitted to the IEEE Journal of Biomedical and Health Informatics). The preprint version is available [here](https://doi.org/10.36227/techrxiv.23296487.v1) on TechRxiv.
+This repository presents the implementation of our collaborative project between UPenn/Orthopaedics, UDel/Physical Therapy, and CMU/Engineering on exercise prediction. The manuscript reporting outcomes of this project is currently under review at the *IEEE Journal of Biomedical and Health Informatics (IEEE JBHI)*. The preprint version is now available [here](https://doi.org/10.36227/techrxiv.23296487.v1) on TechRxiv.
 
 You may preserve the following directory tree to run the code on your local machine without further modifications.
 
@@ -27,8 +27,10 @@ $ Directory tree
 │   └── ... 
 ├── tuning.py
 ├── eval.py
-└── main.py
+└── demo.py
 ```
+
+You may use data samples in the `data` to run the code, or download the full dataset on [SimTK](https://simtk.org/projects/imu-exercise).
 
 ## Requirement
 
