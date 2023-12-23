@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository presents the implementation of our collaborative project between UPenn/Orthopaedics, UDel/Physical Therapy, and CMU/Engineering on exercise prediction. The manuscript reporting outcomes of this project is currently under review at the *IEEE Journal of Biomedical and Health Informatics (JBHI)*. 
+This repository presents the implementation of our collaborative project between UPenn/Orthopaedics, UDel/Physical Therapy, and CMU/Engineering on exercise prediction. The manuscript reporting outcomes of this project is currently under revision at the *IEEE Journal of Biomedical and Health Informatics (JBHI)*. 
 
 The preprint version is now available on [TechRxiv](https://doi.org/10.36227/techrxiv.23296487.v1).
 
@@ -30,21 +30,16 @@ $ Directory tree
 │   ├── Type1.py
 │   ├── Type2.py
 │   └── Type3.py
-├── notebook_version\
-│   └── (containing notebook versions of the implementation)
-├── pretrained_model\
-│   ├── ... 
-│   ├── ...
-│   └── ... 
 ├── utils
 │   ├── eval.py 
 │   ├── network.py
+│   ├── clustering_utils.py
 │   ├── preprocessing.py
 │   └── visualizer.py
-├── clustering.py
-├── config.py
 ├── constants.py
-├── demo.py
+├── data_processing.py
+├── clustering.py
+├── main.py
 └── tuning.py
 ```
 
@@ -61,9 +56,35 @@ The implementation was tested with `Python 3.8.10` and the following packages:
 
 In addition, `matplotlib 3.6.3` and `seaborn 0.12.2` were used for plots.
 
-## Quick Start
+## Guideline
 
-TBD.
+Note: This repository is under active cleaning and update.
+
+### Data processing
+
+```python data_processing.py```
+
+(to be updated with more detailed instruction)
+
+### Clustering analysis
+
+```python clustering.py```
+
+(to be updated with more detailed instruction)
+
+### Hyper-parameter tuning
+
+(to be updated with more detailed instruction)
+
+### Model evaluation
+
+```python main.py```
+
+(to be updated with more detailed instruction)
+
+### Sample size estimation
+
+(to be updated with more detailed instruction)
 
 ## Citation
 

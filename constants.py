@@ -20,9 +20,14 @@ NORM_SAMPLE_LENGTH = 100
 NUM_AX_PER_SENSOR = 3 # x-, y-, and z-
 
 
-""" Number of subject in the dataset
+""" Number of subjects in the dataset
 """
 NUM_SUBJECT = 19
+
+
+""" Number of exercises in the dataset
+"""
+NUM_EXERCISE = 37
 
 
 """ Exercise groups 
@@ -51,25 +56,55 @@ LEARNING_RATE_REDUCTION_FACTOR	= 0.5
 """ Tuned parameters 
 	Run tuning.py to obtain this
 """
-TUNED_HP = [[0, 0, 0, 0, 0],      # subject 1 <--- removed due to only 5 IMUs
-			[32, 256, 4, 1, 2],   # subject 2 left for testing
-			[64, 256, 4, 1, 2],   # subject 3 left for testing
+ID_BATCH_SIZE  = 0
+ID_NUM_OUT     = 1
+ID_KERNEL_SIZE = 2
+ID_STRIDE      = 3
+ID_POOL_SIZE   = 4
+
+# Tuned hyperparameters for using 10 IMUs
+# TODO: Add tuned hyperparameters for other configurations
+TUNED_HP = [[],
+            [32, 256, 4, 1, 2],   # subject 1 left for testing
+			[64, 256, 4, 1, 2],   # subject 2 left for testing
+			[32, 256, 4, 1, 2],   # subject 3 left for testing
 			[32, 256, 4, 1, 2],   # subject 4 left for testing
-			[32, 256, 4, 1, 2],   # subject 5 left for testing
-			[32, 128, 4, 1, 2],   # subject 6 left for testing
+			[32, 128, 4, 1, 2],   # subject 5 left for testing
+			[32, 256, 4, 1, 2],   # subject 6 left for testing
 			[32, 256, 4, 1, 2],   # subject 7 left for testing
 			[32, 256, 4, 1, 2],   # subject 8 left for testing
-			[32, 256, 4, 1, 2],   # subject 9 left for testing
-			[64, 128, 4, 1, 2],   # subject 10 left for testing
-			[32, 128, 4, 1, 2],   # subject 11 left for testing
-			[64, 256, 4, 1, 2],   # subject 12 left for testing
+			[64, 128, 4, 1, 2],   # subject 9 left for testing
+			[32, 128, 4, 1, 2],   # subject 10 left for testing
+			[64, 256, 4, 1, 2],   # subject 11 left for testing
+			[32, 256, 4, 1, 2],   # subject 12 left for testing
+			[32, 128, 4, 1, 2],   # subject 13 left for testing
 			[32, 256, 4, 1, 2],   # subject 14 left for testing
-			[32, 128, 4, 1, 2],   # subject 15 left for testing
-			[32, 256, 4, 1, 2],   # subject 16 left for testing
-			[128, 256, 4, 1, 2],  # subject 17 left for testing
-			[64, 128, 4, 1, 2],   # subject 18 left for testing
-			[64, 256, 4, 1, 2],   # subject 19 left for testing
-			[64, 256, 4, 1, 2],   # subject 21 left for testing
-			[32, 128, 4, 1, 2]]   # subject 22 left for testing
+			[128, 256, 4, 1, 2],  # subject 15 left for testing
+			[64, 128, 4, 1, 2],   # subject 16 left for testing
+			[64, 256, 4, 1, 2],   # subject 17 left for testing
+			[64, 256, 4, 1, 2],   # subject 18 left for testing
+			[32, 128, 4, 1, 2]]   # subject 19 left for testing
+
+
+""" Information
+"""
+SUBJECT_LIST = ['SUB01', 'SUB02', 'SUB03', 'SUB04', 'SUB05', 'SUB06', 'SUB07', 'SUB08', 'SUB09',
+                'SUB10', 'SUB11', 'SUB12', 'SUB13', 'SUB14', 'SUB15', 'SUB16', 'SUB17', 'SUB18', 'SUB19']
+
+EXERCISE_LIST = ['BulgSq', 'CMJDL', 'CMJSL', 'DeclineSq', 'DropJumpDL', 'DropJumpSL', 'DropLandDL', 'DropLandSL',
+                 'FwHop', 'FwHopFast', 'FwJump', 'FwJumpFast', 'HeelRaise', 'LatHop', 'LatHopFast', 
+                 'LatJump', 'LatJumpFast', 'Lunge', 'MaxHop', 'MaxJump', 'Pose', 'Run', 'RunCut', 'RunDec',
+                 'SpainSq', 'SplitJump', 'SportJump', 'SqDL', 'SqHalfDL', 'SqHalfSL', 'SqSL', 
+                 'StepDnH', 'StepDnL', 'StepUpH', 'StepUpL', 'SumoSq', 'Walk']
+
+
+""" MAPPING OF SENSOR POSITION FOR USER INPUTS
+"""
+POS_INPUT_MAPPING = {'shank_l': 'LeftShank', 'shank_r': 'RightShank', 
+					 'thigh_l': 'LeftThigh', 'thigh_r': 'RightThigh', 
+					 'pelvis': 'Pelvis', 'chest': 'Chest', 
+					 'foot_l': 'LeftFoot', 'foot_r': 'RightFoot', 
+					 'wrist_l': 'LeftWrist', 'wrist_r': 'RightWrist'}
+
 
 

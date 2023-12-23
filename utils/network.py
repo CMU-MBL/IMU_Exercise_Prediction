@@ -4,11 +4,14 @@
 
 import sys
 import os
+import torch
+from torch.utils.data import Dataset
 
 sys.path.append('/path/to/IMU_Exercise_Prediction')
 
 import constants
-import config
+from utils.eval import *
+from utils.preprocessing import *
 
 
 class MyDataset(Dataset):
@@ -19,7 +22,7 @@ class MyDataset(Dataset):
 		self.to_size = to_size
 		list_of_samples = [normLength(sample, constants.NORM_SAMPLE_LENGTH).T for sample in list_of_samples]
 
-		self.X = [sample[:ID_EXERCISE_LABEL, :] for sample in list_of_samples]
+		self.X = [sample[:constants.ID_EXERCISE_LABEL, :] for sample in list_of_samples]
 
 		if num_classes == 10:
 			self.Y = [one_hot_encoding(int(sample[constants.ID_CLUSTER_LABEL, :][0]), num_classes) for sample in list_of_samples]
@@ -33,6 +36,7 @@ class MyDataset(Dataset):
 		x = torch.from_numpy(self.X[idx]).float()
 		y = self.Y[idx]
 
+		device = 'cuda' if torch.cuda.is_available() else 'cpu'
 		if device == 'cuda':
 			x = x.to(device)
 			y = torch.from_numpy(y)
@@ -41,36 +45,7 @@ class MyDataset(Dataset):
 		return x, y
 
 
-def predict(some_tensor, labs, num_classes):
-	""" Evaluate prediction
-	"""
-
-	some_tensor = some_tensor.cpu().detach().numpy()
-	labs        = labs.cpu().detach().numpy()
-
-	cm 		= np.zeros([num_classes, num_classes]) # for storing confusion matrix
-	y_truth = []
-	y_pred 	= []
-
-	count = 0
-	for i in range(some_tensor.shape[0]):
-		temp_pred = np.argmax(some_tensor[i])
-		temp_truth = np.argmax(labs[i])
-
-		cm[temp_truth, temp_pred] = cm[temp_truth, temp_pred] + 1
-
-		y_truth.append(temp_truth)
-		y_pred.append(temp_pred)
-
-		if temp_pred == temp_truth:
-			count = count + 1
-		else:
-			pass
-
-	return count, cm, y_truth, y_pred
-
-
-def train_loop(dataloader, model, loss_fn, optimizer, num_classes):
+def train_loop(dataloader, model, loss_fn, optimizer, num_classes, scheduler):
 	""" Training phase
 	"""
 
@@ -80,6 +55,7 @@ def train_loop(dataloader, model, loss_fn, optimizer, num_classes):
 	size        = len(dataloader.dataset)
 	num_batches = len(dataloader)
 	train_loss, correct, sched_factor = 0, 0, 0
+	train_losses = []
 
 	cm = np.zeros([num_classes, num_classes]) 
 	y_truth = []
@@ -89,6 +65,7 @@ def train_loop(dataloader, model, loss_fn, optimizer, num_classes):
 		pred = model(X)
 		y    = y.type(torch.FloatTensor)
 
+		device = 'cuda' if torch.cuda.is_available() else 'cpu'
 		if device == 'cuda': y = y.cuda()
 
 		loss = loss_fn(pred, y)
@@ -136,6 +113,7 @@ def test_loop(dataloader, model, loss_fn, num_classes):
 		for X, y in dataloader:
 			pred = model(X)
 			y = y.type(torch.FloatTensor)
+			device = 'cuda' if torch.cuda.is_available() else 'cpu'
 			if device == 'cuda': y = y.cuda()
 			test_loss += loss_fn(pred, y).item()
 
