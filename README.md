@@ -2,9 +2,9 @@
 
 ## Overview
 
-This repository presents the implementation of our collaborative project between UPenn/Orthopaedics, UDel/Physical Therapy, and CMU/Engineering on exercise prediction. The manuscript reporting outcomes of this project is currently under revision at the *IEEE Journal of Biomedical and Health Informatics (JBHI)*. 
+This repository presents the implementation of our collaborative project between UPenn/Orthopaedics, UDel/Physical Therapy, and CMU/Engineering on exercise prediction. The manuscript reporting outcomes of this project is published on the *IEEE Journal of Biomedical and Health Informatics (JBHI)*. 
 
-The preprint version is now available on [TechRxiv](https://doi.org/10.36227/techrxiv.23296487.v1).
+The paper is available at [this link](https://doi.org/10.1109/JBHI.2024.3368042).
 
 ## Data
 
@@ -64,34 +64,19 @@ Note: This repository is under active cleaning and update.
 
 ```python data_processing.py```
 
-(to be updated with more detailed instruction)
-
 ### Clustering analysis
 
 ```python clustering.py```
-
-(to be updated with more detailed instruction)
-
-### Hyper-parameter tuning
-
-(to be updated with more detailed instruction)
 
 ### Model evaluation
 
 ```python main.py```
 
-(to be updated with more detailed instruction)
 
-### Sample size estimation
-
-(to be updated with more detailed instruction)
-
-## Citation
-
-If your find the code helpful for your work, please consider citing [our paper](https://doi.org/10.36227/techrxiv.23296487.v1)
+If you use any of the data or code, please cite [our paper](https://doi.org/10.1109/JBHI.2024.3368042)
 
 ```
-Phan, Vu; Song, Ke; Silva, Rodrigo Scattone; Silbernagel, Karin G.; Baxter, Josh R.; Halilaj, Eni (2023). Seven Things to Know about Exercise Monitoring with Inertial Sensing Wearables. TechRxiv. Preprint. https://doi.org/10.36227/techrxiv.23296487.v1
+V. Phan, K. Song, R. S. Silva, K. G. Silbernagel, J. R. Baxter and E. Halilaj, "Seven Things to Know About Exercise Classification With Inertial Sensing Wearables," in IEEE Journal of Biomedical and Health Informatics, vol. 28, no. 6, pp. 3411-3421, June 2024, doi: 10.1109/JBHI.2024.3368042.
 ```
 
 
